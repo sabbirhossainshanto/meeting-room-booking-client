@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(43 45 66);
+  /* rgb(75 85 99); */
+}
+
+.default_btn {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(253 61 87 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 61 87 / var(--tw-bg-opacity));
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.bg-facebook {
+  background-color: #3b5999;
+  border: 1px solid #3b5999;
+}
+
+.bg-google {
+  background-color: #d85040;
+  border: 1px solid #d85040;
+}
+
+.box_shadow {
+  box-shadow: 0px 0px 16px rgb(0 0 0 / 6%);
+}
+
+.bg-bgcolor {
+  background-color: rgba(43, 45, 66, 0.48);
+}
+
+.team_img::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 29, 29, 0.42);
+  transition: .3s;
+  opacity: 0;
+  height: 100%;
+}
