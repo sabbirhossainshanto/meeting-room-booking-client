@@ -1,13 +1,42 @@
-import assets from "@/assets";
 import Container from "@/components/shared/Container";
-import { useGetAllRoomsQuery } from "@/redux/features/rooms/roomApi";
+import {
+  useDeleteRoomMutation,
+  useGetAllRoomsQuery,
+} from "@/redux/features/rooms/roomApi";
+import { TRoom } from "@/types";
+import toast from "react-hot-toast";
 import { FaGreaterThan } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const RoomManagement = () => {
   const navigate = useNavigate();
+  const [deleteRoom] = useDeleteRoomMutation();
   const { data } = useGetAllRoomsQuery(undefined);
+
+  const handleDeleteRoom = async (room: TRoom) => {
+    try {
+      Swal.fire({
+        title: "Are you sure!",
+        text: `Do you want to delete ${room.name}!`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Delete it!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await deleteRoom(room._id).unwrap();
+          if (res?.success) {
+            toast.success(res?.message);
+          }
+        }
+      });
+    } catch (error: any) {
+      toast.error(error?.data?.errorMessages?.[0]?.message);
+    }
+  };
   return (
     <div className="py-14">
       <Container>
@@ -21,7 +50,10 @@ const RoomManagement = () => {
             <FaGreaterThan className="" />
             <span className="text-lg text-primary">Room Management</span>
           </div>
-          <button className="default_btn rounded  hover:bg-white hover:border-rose-500 hover:text-primary">
+          <button
+            onClick={() => navigate("/dashboard/add-room")}
+            className="default_btn rounded  hover:bg-white hover:border-rose-500 hover:text-primary"
+          >
             Create Room
           </button>
         </div>
@@ -83,7 +115,10 @@ const RoomManagement = () => {
                       Edit Room
                     </button>
                   </div>
-                  <div className="cursor-pointer hover:text-primary transition">
+                  <div
+                    onClick={() => handleDeleteRoom(room)}
+                    className="cursor-pointer hover:text-primary transition"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"

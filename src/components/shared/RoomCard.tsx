@@ -29,7 +29,7 @@ const RoomCard = ({ room }: { room: TRoom }) => {
     }
   };
   return (
-    <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group">
+    <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group flex flex-col">
       <div className="relative">
         <img
           src={room.images?.[0]}
@@ -56,7 +56,7 @@ const RoomCard = ({ room }: { room: TRoom }) => {
           </button>
         </div>
       </div>
-      <div className="p-4">
+      <div className="p-4 flex-grow">
         <a href="#">
           <h4 className="text-lg leading-6 mb-1  hover:text-primary font-medium transition duration-200">
             {room.name}
@@ -71,8 +71,8 @@ const RoomCard = ({ room }: { room: TRoom }) => {
           </span>
         </div>
       </div>
-      <div className="w-full">
-        <button className="group default_btn btn-hover w-full rounded-t-none text-base leading-[19px] gap-1.5 p-2 rounded-b-[3px] flex items-center justify-center transition-all duration-500">
+      <div className="w-full mt-auto">
+        <button className="group default_btn btn-hover w-full rounded-t-none text-base leading-[19px] gap-1.5 p-2 rounded-b-[3px] flex items-center justify-center transition-all duration-500 ">
           <IoCartOutline
             className="text-white group-hover:text-primary  transition duration-500"
             size={20}
