@@ -7,7 +7,7 @@ export type TRoom = {
   pricePerSlot: number;
   roomNo: number;
   isDeleted: boolean;
-  image:string
+  images:string[]
 };
 
 

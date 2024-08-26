@@ -16,7 +16,17 @@ const roomApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getSingleRooms: builder.query<TResponseRedux<TRoom>, unknown>({
+      query: (id: string) => ({
+        url: `/rooms/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useAddRoomMutation, useGetAllRoomsQuery } = roomApi;
+export const {
+  useAddRoomMutation,
+  useGetAllRoomsQuery,
+  useGetSingleRoomsQuery,
+} = roomApi;

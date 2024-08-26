@@ -39,7 +39,7 @@ const HeroSection = () => {
                     <p className="bg-[#3335] px-10 py-1 text-white font-semibold text-base sm:text-lg rounded-md h-auto">
                       {slider.title}
                     </p>
-                    <button className="default_btn btn-hover rounded">
+                    <button onClick={() => navigate('/meeting-rooms')} className="default_btn btn-hover rounded">
                       Book Now
                     </button>
                   </div>

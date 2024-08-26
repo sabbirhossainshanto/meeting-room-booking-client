@@ -2,14 +2,15 @@ import { TRoom } from "@/types";
 import { FaEye } from "react-icons/fa";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const RoomCard = ({ room }: {room:TRoom}) => {
-
+const navigate = useNavigate()
   return (
     <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group">
       <div className="relative">
         <img
-          src={room.image}
+          src={room.images?.[0]}
           className="w-full object-cover flex-shrink-0"
           alt="product"
         />
@@ -22,6 +23,9 @@ const RoomCard = ({ room }: {room:TRoom}) => {
         </div>
         <div className="w-full h-full absolute left-0 top-0 bg-bgcolor opacity-0 group-hover:opacity-100 transition-all duration-500">
           <button
+          onClick={()=>{
+          navigate(`/meeting-rooms/${room._id}`)
+          }}
             style={{ backgroundColor: "rgba(43 45 66)" }}
             className="absolute left-0 bottom-0 w-full p-2 bg-secondary text-white text-base text-center leading-4 flex items-center justify-center gap-1"
           >

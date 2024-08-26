@@ -7,11 +7,18 @@ import NotFound from "@/pages/NotFound/NotFound";
 import MeetingRoom from "@/pages/MeetingRoom/MeetingRoom";
 import AboutUs from "@/pages/AboutUs/AboutUs";
 import ContactUs from "@/pages/ContactUs/ContactUs";
+import ScrollToTop from "@/components/shared/ScrollToTop";
+import SingleRoom from "@/pages/SingleRoom/SingleRoom";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        <ScrollToTop />
+        <App />
+      </>
+    ),
     errorElement: <NotFound />,
     children: [
       {
@@ -21,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/meeting-rooms",
         element: <MeetingRoom />,
+      },
+      {
+        path: "/meeting-rooms/:id",
+        element: <SingleRoom />,
       },
       {
         path: "/about-us",
