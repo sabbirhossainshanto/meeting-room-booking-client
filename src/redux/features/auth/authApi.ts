@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/api/baseApi";
+import { TFullUser, TResponseRedux } from "@/types";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -16,7 +17,13 @@ const authApi = baseApi.injectEndpoints({
         body: payload,
       }),
     }),
+    getMe: builder.query<TResponseRedux<TFullUser>, unknown>({
+      query: () => ({
+        url: "/auth/getMe",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation,useSignUpMutation } = authApi;
+export const { useLoginMutation, useSignUpMutation, useGetMeQuery } = authApi;

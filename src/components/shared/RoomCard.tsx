@@ -1,11 +1,33 @@
+import { useAppSelector } from "@/redux/hooks";
 import { TRoom } from "@/types";
 import { FaEye } from "react-icons/fa";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 
-const RoomCard = ({ room }: {room:TRoom}) => {
-const navigate = useNavigate()
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+const RoomCard = ({ room }: { room: TRoom }) => {
+  const { user } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const navigateToRoomDetail = (id: string) => {
+    if (user?.role === "user") {
+      navigate(`/meeting-rooms/${id}`);
+    } else if (user?.role === "admin") {
+      Swal.fire({
+        title: "You are not authorized!",
+        text: "You are not authorized!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Go there!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // navigate(`/login`);
+        }
+      });
+    }
+  };
   return (
     <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group">
       <div className="relative">
@@ -23,9 +45,7 @@ const navigate = useNavigate()
         </div>
         <div className="w-full h-full absolute left-0 top-0 bg-bgcolor opacity-0 group-hover:opacity-100 transition-all duration-500">
           <button
-          onClick={()=>{
-          navigate(`/meeting-rooms/${room._id}`)
-          }}
+            onClick={() => navigateToRoomDetail(room._id)}
             style={{ backgroundColor: "rgba(43 45 66)" }}
             className="absolute left-0 bottom-0 w-full p-2 bg-secondary text-white text-base text-center leading-4 flex items-center justify-center gap-1"
           >

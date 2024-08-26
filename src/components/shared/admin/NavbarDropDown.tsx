@@ -3,7 +3,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-const NavbarDropdown = () => {
+const NavbarDropDown = () => {
   const dispatch = useDispatch();
   const { user } = useAppSelector((state) => state.auth);
   return (
@@ -148,4 +148,4 @@ const NavbarDropdown = () => {
   );
 };
 
-export default NavbarDropdown;
+export default NavbarDropDown;

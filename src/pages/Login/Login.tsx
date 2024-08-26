@@ -95,7 +95,7 @@ const Login = () => {
                 </div>
                 <div>
                   <a
-                    href="forgot-password.html"
+             
                     className="text-primary text-sm sm:text-base"
                   >
                     Forgot Password?

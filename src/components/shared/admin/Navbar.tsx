@@ -1,12 +1,9 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import Container from "./Container";
+import { Link, NavLink } from "react-router-dom";
+import Container from "../Container";
 import assets from "@/assets";
-import { useAppSelector } from "@/redux/hooks";
-import NavbarDropdown from "../modal/NavbarDropdown";
+import NavbarDropDown from "./NavbarDropDown";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const { token } = useAppSelector((state) => state.auth);
   return (
     <div className=" bg-[#2b2d42] ">
       <Container>
@@ -15,11 +12,8 @@ const Navbar = () => {
             <Link to="/">
               <img className="h-7" src={assets.logo} alt="" />
             </Link>
-
-            {/* <div className="block sm:hidden">
-                <DropDownNavbar />
-              </div> */}
           </div>
+
           <div className="sm:flex items-center gap-4 hidden sm:block]">
             <NavLink
               className={({ isActive }) =>
@@ -37,9 +31,9 @@ const Navbar = () => {
                   isActive ? "font-semibold" : ``
                 }`
               }
-              to="/meeting-rooms"
+              to="/dashboard/room-management"
             >
-              Meeting Rooms
+              Room Management
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -47,9 +41,9 @@ const Navbar = () => {
                   isActive ? "font-semibold" : ``
                 }`
               }
-              to="/about-us"
+              to="/slot-management"
             >
-              About Us
+              Slot Management
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -57,32 +51,16 @@ const Navbar = () => {
                   isActive ? "font-semibold" : ``
                 }`
               }
-              to="contact-us"
+              to="/booking-management"
             >
-              Contact Us
+              Booking Management
             </NavLink>
           </div>
-          {token ? (
-            <div className="relative group">
-              <img  className="h-10 cursor-pointer" src={assets.user} alt="" />
-              <NavbarDropdown />
-            </div>
-          ) : (
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => navigate("/register")}
-                className="bg-white px-3 py-2.5 rounded-sm text-primary font-semibold"
-              >
-                Register
-              </button>
-              <button
-                onClick={() => navigate("/login")}
-                className="bg-white px-3 py-2.5 rounded-sm text-primary font-semibold"
-              >
-                Sign In
-              </button>
-            </div>
-          )}
+
+          <div className="relative group">
+            <img className="h-10 cursor-pointer" src={assets.user} alt="" />
+            <NavbarDropDown />
+          </div>
         </header>
       </Container>
     </div>

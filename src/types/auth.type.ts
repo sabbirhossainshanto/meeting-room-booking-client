@@ -5,3 +5,13 @@ export type TUser = {
   iat: number;
   exp: number;
 };
+
+export type TFullUser = {
+  _id: string;
+  name: string;
+  email: string;
+  address: string;
+  confirmPassword: string;
+  phone: string;
+  role: string;
+};

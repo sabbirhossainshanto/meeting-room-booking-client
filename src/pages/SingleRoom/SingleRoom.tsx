@@ -16,6 +16,9 @@ const SingleRoom = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useGetSingleRoomsQuery(id);
+  const navigateCheckoutPage = (id: string) => {
+    navigate(`/booking/${id}`);
+  };
 
   return (
     <div className="py-10">
@@ -116,17 +119,17 @@ const SingleRoom = () => {
                 </div>
 
                 <div className="flex gap-5 mt-6 border-b pb-5">
-                  <a
-                    href="shopping-cart.html"
+                  <button
+                    onClick={() => navigateCheckoutPage(data?.data?._id as string)}
                     className="flex gap-2 items-center border border-primary bg-primary text-sm sm:text-base text-white hover:bg-white hover:text-primary transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group"
                   >
                     <span className="text-white group-hover:text-primary">
                       <IoCartOutline size={20} />
                     </span>
                     Book Now
-                  </a>
+                  </button>
                   <a
-                    href="wishlist.html"
+                  
                     className="flex gap-2 items-center border border-primary hover:bg-primary text-primary  hover:text-white transition duration-300 px-2 sm:px-8 py-2 rounded uppercase group"
                   >
                     <span className="text-primary group-hover:text-white">
