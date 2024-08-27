@@ -13,6 +13,7 @@ import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import Checkout from "@/pages/Checkout/Checkout";
 import AdminLayout from "@/components/layout/AdminLayout";
 import { adminRoutes } from "./adminRoutes";
+import MyBookings from "@/pages/MyBooking/MyBooking";
 
 const MainRouter = () => {
   const router = createBrowserRouter([
@@ -47,6 +48,14 @@ const MainRouter = () => {
           element: (
             <ProtectedRoute role="user">
               <Checkout />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/my-bookings",
+          element: (
+            <ProtectedRoute role="user">
+              <MyBookings />
             </ProtectedRoute>
           ),
         },

@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/api/baseApi";
+import { TMyBooking, TResponseRedux } from "@/types";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -11,7 +12,15 @@ const bookingApi = baseApi.injectEndpoints({
         };
       },
     }),
+    myBookings: builder.query<TResponseRedux<TMyBooking[]>, unknown>({
+      query: () => {
+        return {
+          url: "/my-bookings",
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useCreateBookingMutation } = bookingApi;
+export const { useCreateBookingMutation, useMyBookingsQuery } = bookingApi;

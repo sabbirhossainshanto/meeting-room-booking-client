@@ -24,7 +24,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `text-white transition-colors duration-75 font-medium  text-lg ${
-                  isActive ? "font-semibold" : ``
+                  isActive ? "font-semibold text-rose-600" : ``
                 }`
               }
               to="/"
@@ -34,7 +34,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `text-white transition-colors duration-75 font-medium  text-lg ${
-                  isActive ? "font-semibold" : ``
+                  isActive ? "font-semibold text-rose-600" : ``
                 }`
               }
               to="/meeting-rooms"
@@ -44,7 +44,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `text-white transition-colors duration-75 font-medium  text-lg ${
-                  isActive ? "font-semibold" : ``
+                  isActive ? "font-semibold text-rose-600" : ``
                 }`
               }
               to="/about-us"
@@ -54,7 +54,7 @@ const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 `text-white transition-colors duration-75 font-medium  text-lg ${
-                  isActive ? "font-semibold" : ``
+                  isActive ? "font-semibold text-rose-600" : ``
                 }`
               }
               to="contact-us"
