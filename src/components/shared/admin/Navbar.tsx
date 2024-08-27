@@ -51,9 +51,19 @@ const Navbar = () => {
                   isActive ? "font-semibold" : ``
                 }`
               }
-              to="/booking-management"
+              to="/dashboard/booking-management"
             >
               Booking Management
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `text-white transition-colors duration-75 font-medium  text-lg ${
+                  isActive ? "font-semibold" : ``
+                }`
+              }
+              to="/dashboard/user-management"
+            >
+              User Management
             </NavLink>
           </div>
 

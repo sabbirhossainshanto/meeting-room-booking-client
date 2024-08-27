@@ -19,11 +19,40 @@ const authApi = baseApi.injectEndpoints({
     }),
     getMe: builder.query<TResponseRedux<TFullUser>, unknown>({
       query: () => ({
-        url: "/auth/getMe",
+        url: "/users/getMe",
         method: "GET",
       }),
+    }),
+    getAllUser: builder.query<TResponseRedux<TFullUser[]>, unknown>({
+      query: () => ({
+        url: "/users",
+        method: "GET",
+      }),
+      providesTags: ["user"],
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["user"],
+    }),
+    updateRole: builder.mutation({
+      query: (payload) => ({
+        url: `/users/${payload.id}`,
+        method: "PATCH",
+        body: payload.data,
+      }),
+      invalidatesTags: ["user"],
     }),
   }),
 });
 
-export const { useLoginMutation, useSignUpMutation, useGetMeQuery } = authApi;
+export const {
+  useLoginMutation,
+  useSignUpMutation,
+  useGetMeQuery,
+  useGetAllUserQuery,
+  useDeleteUserMutation,
+  useUpdateRoleMutation,
+} = authApi;

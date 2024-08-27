@@ -16,15 +16,14 @@ const Footer = () => {
             <span>.com</span>
           </h1>
           <p className="text-xl text-[#2B2D42] ">
-            Lorem ipsum, or lipsum as it is sometimes kno wn, is dummy text used
-            in laying out print, gra phic or web designs the passage.
+          Book the perfect space for your next meeting. At Booking.com, we provide a variety of rooms designed to meet your business needs.
           </p>
           <div className="flex flex-col gap-4 pt-4">
             <label
               htmlFor="newsLetter"
               className="text-gray-900 text-xl uppercase"
             >
-              Newsletter
+              Subscribe
             </label>
             <form className="flex">
               <input
@@ -54,12 +53,12 @@ const Footer = () => {
             </p>
             <p className="flex items-center gap-2 text-lg">
               <LuMessageCircle size={20} />
-              <span>info@domain.com</span>
+              <span>sabbirshnt@gmail.com</span>
             </p>
             <div className="flex items-center gap-4">
-              <img className="h-7" src={assets.facebook} alt="" />
-              <img className="h-7" src={assets.instagram} alt="" />
-              <img className="h-7" src={assets.twitter} alt="" />
+              <img className="h-7 cursor-pointer" src={assets.facebook} alt="" />
+              <img className="h-7 cursor-pointer" src={assets.instagram} alt="" />
+              <img className="h-7 cursor-pointer" src={assets.twitter} alt="" />
             </div>
           </div>
         </div>

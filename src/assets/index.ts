@@ -12,6 +12,10 @@ import contactBanner from "./images/contact-banner.jpg";
 import home from "./images/home.svg";
 import aboutUs1 from "./images/about-img.jpg";
 import aboutUs2 from "./images/about-img-2.jpg";
+import team1 from "./images/team-1.jpg";
+import team2 from "./images/team-2.jpg";
+import team3 from "./images/team-3.jpg";
+import team4 from "./images/team-4.jpg";
 export default {
   logo,
   paymentMethod,
@@ -27,4 +31,8 @@ export default {
   home,
   aboutUs1,
   aboutUs2,
+  team1,
+  team2,
+  team3,
+  team4,
 };

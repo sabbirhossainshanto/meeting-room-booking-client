@@ -3,33 +3,55 @@ import { TRoom } from "@/types";
 import { FaEye } from "react-icons/fa";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
-
 import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
+
 const RoomCard = ({ room }: { room: TRoom }) => {
   const { user } = useAppSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const navigateToRoomDetail = (id: string) => {
     if (user) {
-      navigate(`/meeting-rooms/${id}`);
+      if (user?.role === "user") {
+        navigate(`/meeting-rooms/${id}`);
+      }
+    } else {
+      Swal.fire({
+        title: "Please login to see details",
+        text: "Please login",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Go there!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate(`/login`);
+        }
+      });
     }
+  };
 
-    // else if (user?.role === "admin") {
-    //   Swal.fire({
-    //     title: "You are not authorized!",
-    //     text: "You are not authorized!",
-    //     icon: "warning",
-    //     showCancelButton: true,
-    //     confirmButtonColor: "#3085d6",
-    //     cancelButtonColor: "#d33",
-    //     confirmButtonText: "Yes, Go there!",
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       // navigate(`/login`);
-    //     }
-    //   });
-    // }
+  const handleNavigateToBooking = (room: TRoom) => {
+    if (user) {
+      if (user?.role === "user") {
+        navigate(`/booking/${room._id}`);
+      }
+    } else {
+      Swal.fire({
+        title: "Please login to see details",
+        text: "Please login",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Go there!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate(`/login`);
+        }
+      });
+    }
   };
   return (
     <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group flex flex-col">
@@ -40,9 +62,6 @@ const RoomCard = ({ room }: { room: TRoom }) => {
           alt="product"
         />
 
-        <div className="absolute top-[15px] left-[15px] p-2 rounded-[3px] bg-[#ffc107] text-[15px] text-white leading-[18px] z-10">
-          50%
-        </div>
         <div className="w-[30px] h-[30px] bg-white text-base shadow-sm rounded-full absolute top-[15px] right-[15px] z-10 text-primary flex items-center justify-center cursor-pointer">
           <IoMdHeartEmpty size={23} />
         </div>
@@ -78,11 +97,11 @@ const RoomCard = ({ room }: { room: TRoom }) => {
         </div>
       </div>
       <div className="w-full mt-auto">
-        <button className="group default_btn btn-hover w-full rounded-t-none text-base leading-[19px] gap-1.5 p-2 rounded-b-[3px] flex items-center justify-center transition-all duration-500 ">
-          <IoCartOutline
-            className="text-white group-hover:text-primary  transition duration-500"
-            size={20}
-          />
+        <button
+          onClick={() => handleNavigateToBooking(room)}
+          className="group default_btn btn-hover w-full rounded-t-none text-base leading-[19px] gap-1.5 p-2 rounded-b-[3px] flex items-center justify-center transition-all duration-500"
+        >
+          <IoCartOutline size={20} />
           Book Now
         </button>
       </div>

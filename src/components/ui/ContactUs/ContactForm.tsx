@@ -8,7 +8,7 @@ const ContactForm = () => {
               Leave us a message
             </h4>
             <p className="mb-6 text-[15px]">
-              Use the form below to get in touch with the sales team
+              Use the form below to get in touch with the team
             </p>
             <div className="grid grid-cols-12 gap-5">
               <div className="col-span-12 sm:col-span-6">
@@ -76,7 +76,7 @@ const ContactForm = () => {
         </div>
         <div className="col-span-12 lg:col-span-5 bg-white box_shadow px-[30px] py-[24px]">
           <div className=" padding_default border-0 shadow_sm">
-            <h4 className="text-[18px] uppercase mb-[14px]">our store</h4>
+            <h4 className="text-[18px] uppercase mb-[14px]">our office</h4>
             <div className="footer_contact">
               <div className="relative pb-3">
                 <p className="absolute top-1 left-0">
@@ -141,50 +141,16 @@ const ContactForm = () => {
                     ></path>
                   </svg>
                 </span>
-                <p className="pl-[32px]"> info@domain.com</p>
-              </div>
-            </div>
-
-            <h4 className="mt-4 mb-[14px] uppercase">Hours of operation</h4>
-            <div className="space-y-2">
-              <div className="flex justify-between">
-                <p>Saturday</p>
-                <p>12:00 PM</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Sunday</p>
-                <p>12:00 PM</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Monday</p>
-                <p>12:00 PM</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Tuesday</p>
-                <p>12:00 PM</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Wednesday</p>
-                <p>12:00 PM</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Thursday</p>
-                <p>12:00 PM</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Friday</p>
-                <p>12:00 PM</p>
+                <p className="pl-[32px]"> sabbirshnt@gmail.com</p>
               </div>
             </div>
 
             <h4 className="text-lg mt-4 mb-3 uppercase">Careers</h4>
-            <p className="text_md mb-0">
+            <p className="font-medium mb-0">
               If you are interesting in emplyment <br /> opportunities at
-              RAFCARTs. Please email us :
+              booking.com. Please email us :
             </p>
-            <a href="#" className="text-primary">
-              contact@mail.com
-            </a>
+            <a className="text-primary">booking.com@mail.com</a>
           </div>
         </div>
       </div>

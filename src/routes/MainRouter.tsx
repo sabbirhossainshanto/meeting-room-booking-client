@@ -36,7 +36,11 @@ const MainRouter = () => {
         },
         {
           path: "/meeting-rooms/:id",
-          element: <SingleRoom />,
+          element: (
+            <ProtectedRoute role="user">
+              <SingleRoom />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/booking/:id",

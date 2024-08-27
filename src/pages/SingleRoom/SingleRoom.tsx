@@ -38,7 +38,7 @@ const SingleRoom = () => {
           <div className="grid grid-cols-12 gap-6">
             <div
               className="col-span-12 lg:col-span-6"
-              x-data="productImageModule"
+           
             >
               <div className="flex justify-center items-center">
                 <img
@@ -85,7 +85,7 @@ const SingleRoom = () => {
                   <div className="space-y-2 mt-4">
                     <p>
                       <span className="font-medium pr-3">Room No:</span>
-                      <span className="font-medium">{data?.data?.roomNo}</span>
+                      <span className="">{data?.data?.roomNo}</span>
                     </p>
                     <p>
                       <span className="font-medium pr-3">Floor Bo:</span>
@@ -97,20 +97,18 @@ const SingleRoom = () => {
                     </p>
                   </div>
                   <div className="mt-3 flex gap-3 items-center overflow-hidden">
-                    <span className="line-through">$150</span>
+                    <span className="font-medium pr-3">Price Per Slot : </span>
                     <span className="text-2xl text-primary font-semibold">
                       ${data?.data?.pricePerSlot}
                     </span>
-                    <div className="ml-3 text-sm bg-primary text-white px-2 py-[2px] relative after:absolute after:w-[14px] after:h-[14px] after:bg-primary after:-left-1 after:top-1 after:rotate-45">
-                      -30%
-                    </div>
+                   
                   </div>
                   <div className="mt-2">
                     <p>
                       <span className="font-medium pr-3">Amenities:</span>
 
                       {data?.data?.amenities.map((item) => (
-                        <span className="text-[#08B54C] font-medium">
+                        <span className="">
                           {item}{" "}
                         </span>
                       ))}

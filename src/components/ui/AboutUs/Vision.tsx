@@ -2,7 +2,7 @@ import assets from "@/assets";
 
 const Vision = () => {
   return (
-    <div className="container grid  grid-cols-12 gap-6">
+    <div className="container grid grid-cols-12 gap-6">
       <div className="col-span-12 lg:col-span-5">
         <div className="about_imgs">
           <img loading="lazy" src={assets.aboutUs2} className="w-100" />
@@ -12,15 +12,10 @@ const Vision = () => {
         <div className="about_hiscont ps-xl-2">
           <h2 className="text-sm text-primary mb-2">OUR VISION</h2>
           <h3 className="text-2xl lg:text-3xl uppercase mb-3">
-            Our vision is simple - We exist to{" "}
-            <br className="d-none d-xl-block" />
-            accelerate our customers’ progress
+            Transforming Meetings into Meaningful Experiences
           </h3>
           <p className="mb-4">
-            we design and deliver our customers’ digital transformation by
-            bringing together their vision with our industry knowledge and deep
-            technological expertise. we design and deliver our customers’
-            digital transformation
+            At the heart of our vision is a commitment to revolutionizing the way meetings are organized and experienced. We strive to provide seamless booking solutions that enhance productivity and foster collaboration. Our goal is to offer flexible, well-equipped spaces that cater to diverse needs, ensuring every meeting is efficient and impactful.
           </p>
           <div>
             <p className="flex items-center gap-2 mb-2">
@@ -32,7 +27,7 @@ const Vision = () => {
                   ></path>
                 </svg>
               </span>
-              We build strong relationships
+              We deliver seamless booking solutions
             </p>
             <p className="flex items-center gap-2 mb-2">
               <span className="text-primary me-2">
@@ -43,7 +38,7 @@ const Vision = () => {
                   ></path>
                 </svg>
               </span>
-              We encourage initiative and provide opportunity
+              We offer flexible and modern meeting spaces
             </p>
             <p className="flex items-center gap-2 mb-2">
               <span className="text-primary me-2">
@@ -54,7 +49,7 @@ const Vision = () => {
                   ></path>
                 </svg>
               </span>
-              We embrace change and creativity
+              We prioritize customer satisfaction
             </p>
             <p className="flex items-center gap-2 mb-2">
               <span className="text-primary me-2">
@@ -65,7 +60,7 @@ const Vision = () => {
                   ></path>
                 </svg>
               </span>
-              We champion an environment of honesty
+              We foster an environment of innovation and growth
             </p>
           </div>
         </div>
