@@ -1,9 +1,9 @@
+import UpdateSlot from "@/components/modal/admin/UpdateSlot";
 import Container from "@/components/shared/Container";
 import {
-  useDeleteRoomMutation,
-  useGetAllRoomsQuery,
-} from "@/redux/features/rooms/roomApi";
-import { TRoom } from "@/types";
+  useDeleteSlotMutation,
+  useGetAvailableSlotsQuery,
+} from "@/redux/features/user/slot/slotApi";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGreaterThan } from "react-icons/fa";
@@ -11,18 +11,18 @@ import { MdDashboard } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const RoomManagement = () => {
-  const [roomId, setRoomId] = useState("");
+const SlotManagement = () => {
+  const [slotId, setSlotId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const [deleteRoom] = useDeleteRoomMutation();
-  const { data } = useGetAllRoomsQuery(undefined);
+  const [deleteSlot] = useDeleteSlotMutation();
+  const { data } = useGetAvailableSlotsQuery(undefined);
 
-  const handleDeleteRoom = async (room: TRoom) => {
+  const handleDeleteSlot = async (id: string) => {
     try {
       Swal.fire({
         title: "Are you sure!",
-        text: `Do you want to delete ${room.name}!`,
+        text: `Do you want to delete this slot!`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -30,7 +30,7 @@ const RoomManagement = () => {
         confirmButtonText: "Yes, Delete it!",
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const res = await deleteRoom(room._id).unwrap();
+          const res = await deleteSlot(id).unwrap();
           if (res?.success) {
             toast.success(res?.message);
           }
@@ -39,6 +39,11 @@ const RoomManagement = () => {
     } catch (error: any) {
       toast.error(error?.data?.errorMessages?.[0]?.message);
     }
+  };
+
+  const handleModalOpen = (id: string) => {
+    setIsModalOpen(true);
+    setSlotId(id);
   };
   return (
     <div className="py-14">
@@ -51,75 +56,83 @@ const RoomManagement = () => {
               className="text-primary cursor-pointer"
             />
             <FaGreaterThan className="" />
-            <span className="text-lg text-primary">Room Management</span>
+            <span className="text-lg text-primary">Slot Management</span>
           </div>
           <button
-            onClick={() => navigate("/dashboard/add-room")}
+            onClick={() => navigate("/dashboard/add-slot")}
             className="default_btn rounded  hover:bg-white hover:border-rose-500 hover:text-primary"
           >
-            Create Room
+            Add Slot
           </button>
         </div>
         <div className="col-span-12 lg:col-span-9">
-          {data?.data?.map((room) => {
+          {data?.data?.map((slot) => {
             return (
               <div
-                key={room._id}
+                key={slot._id}
                 className="md:flex justify-between items-center border rounded p-5"
               >
                 <div className="w-20 h-20">
                   <img
                     loading="lazy"
                     className="w-full h-full object-cover"
-                    src={room.images?.[0]}
+                    src={slot.room.images?.[0]}
                     alt="product"
                   />
                 </div>
                 <div className="mt-6 md:mt-0">
                   <a
-                    href="product-view.html"
-                    className="hover:text-primary transition duration-300 text-lg"
+                    onClick={() => navigate(`/meeting-rooms/${slot.room._id}`)}
+                    className="hover:text-primary transition duration-300 text-lg cursor-pointer"
                   >
                     <h5 className="font-medium">
-                      <span className="font-semibold">Name :</span> {room.name}
+                      <span className="font-semibold">Name :</span>{" "}
+                      {slot.room.name}
                     </h5>
                   </a>
-                  <p className="instock mb-0">
-                    Room No:{" "}
-                    <span className="text-[#28A745]">{room.roomNo}</span>
-                  </p>
-                  <p className="instock mb-0">
-                    Floor No:{" "}
-                    <span className="text-[#28A745]">{room.floorNo}</span>
+                  <p className=" text-lg">
+                    <h5 className="font-medium ">
+                      <span className="font-semibold ">Room No :</span>{" "}
+                      <span className="">{slot.room.roomNo}</span>
+                    </h5>
                   </p>
                 </div>
                 <div className="mt-6 md:mt-0">
-                  <a
-                    href="product-view.html"
-                    className="hover:text-primary transition duration-300 text-lg"
-                  >
+                  <p className=" text-lg">
                     <h5 className="font-medium ">
-                      <span className="font-semibold ">Capacity :</span>{" "}
-                      <span className="text-[#28A745]">{room.capacity}</span>
+                      <span className="font-semibold ">Date :</span>{" "}
+                      <span className="">{slot.date}</span>
                     </h5>
-                  </a>
-                  <div className="text-[18px]  font-semibold mt-2 md:mt-0">
-                    <h5 className="font-medium">
-                      <span className="font-semibold">Price Per Slot :</span>{" "}
-                      <span className="text-primary">${room.pricePerSlot}</span>
+                  </p>
+                  <p className=" text-lg">
+                    <h5 className="font-medium ">
+                      <span className="font-semibold ">Start Time :</span>{" "}
+                      <span className="">{slot.startTime}</span>
                     </h5>
-                  </div>
+                  </p>
+
+                  <p className=" text-lg">
+                    <h5 className="font-medium ">
+                      <span className="font-semibold ">End Time :</span>{" "}
+                      <span className="">{slot.endTime}</span>
+                    </h5>
+                  </p>
                 </div>
 
                 <div className="flex justify-between md:gap-12 items-center mt-4 md:mt-0">
-                  <div className="group">
-                    <button className="flex gap-2 items-center border border-primary bg-primary text-white text-sm uppercase px-4 py-2 rounded hover:bg-white hover:text-primary transition duration-300">
-                      <span className="text-white group-hover:text-primary transition"></span>{" "}
-                      Edit Room
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => handleModalOpen(slot._id)}
+                    className="default_btn rounded  hover:bg-white hover:border-rose-500 hover:text-primary"
+                  >
+                    Update Slot
+                  </button>
+                  <UpdateSlot
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    slotId={slotId}
+                  />
                   <div
-                    onClick={() => handleDeleteRoom(room)}
+                    onClick={() => handleDeleteSlot(slot._id)}
                     className="cursor-pointer hover:text-primary transition"
                   >
                     <svg
@@ -144,4 +157,4 @@ const RoomManagement = () => {
   );
 };
 
-export default RoomManagement;
+export default SlotManagement;

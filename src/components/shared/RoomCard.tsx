@@ -5,28 +5,31 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 const RoomCard = ({ room }: { room: TRoom }) => {
   const { user } = useAppSelector((state) => state.auth);
+
   const navigate = useNavigate();
   const navigateToRoomDetail = (id: string) => {
-    if (user?.role === "user") {
+    if (user) {
       navigate(`/meeting-rooms/${id}`);
-    } else if (user?.role === "admin") {
-      Swal.fire({
-        title: "You are not authorized!",
-        text: "You are not authorized!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Go there!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // navigate(`/login`);
-        }
-      });
     }
+
+    // else if (user?.role === "admin") {
+    //   Swal.fire({
+    //     title: "You are not authorized!",
+    //     text: "You are not authorized!",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonColor: "#3085d6",
+    //     cancelButtonColor: "#d33",
+    //     confirmButtonText: "Yes, Go there!",
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       // navigate(`/login`);
+    //     }
+    //   });
+    // }
   };
   return (
     <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group flex flex-col">
@@ -57,7 +60,10 @@ const RoomCard = ({ room }: { room: TRoom }) => {
         </div>
       </div>
       <div className="p-4 flex-grow">
-        <a href="#">
+        <a
+          className="cursor-pointer"
+          onClick={() => navigateToRoomDetail(room._id)}
+        >
           <h4 className="text-lg leading-6 mb-1  hover:text-primary font-medium transition duration-200">
             {room.name}
           </h4>

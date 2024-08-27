@@ -14,7 +14,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="sm:flex items-center gap-4 hidden sm:block]">
+          <div className="lg:flex items-center gap-4 hidden">
             <NavLink
               className={({ isActive }) =>
                 `text-white transition-colors duration-75 font-medium  text-lg ${
@@ -41,7 +41,7 @@ const Navbar = () => {
                   isActive ? "font-semibold" : ``
                 }`
               }
-              to="/slot-management"
+              to="/dashboard/slot-management"
             >
               Slot Management
             </NavLink>

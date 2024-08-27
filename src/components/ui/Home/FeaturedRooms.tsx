@@ -3,7 +3,7 @@ import RoomCard from "@/components/shared/RoomCard";
 
 const FeaturedRooms = () => {
   const { data } = useGetAllRoomsQuery(undefined);
-
+console.log(data);
   return (
     <div className="container pb-14">
       <h2 className="text-[28px] mb-6">Featured Rooms For You</h2>
