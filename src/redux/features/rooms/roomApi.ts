@@ -9,17 +9,17 @@ const roomApi = baseApi.injectEndpoints({
         method: "POST",
         body: payload,
       }),
-      invalidatesTags:['room']
+      invalidatesTags: ["room"],
     }),
     getAllRooms: builder.query<TResponseRedux<TRoom[]>, void>({
       query: () => ({
         url: "/rooms",
         method: "GET",
       }),
-      providesTags:['room']
+      providesTags: ["room"],
     }),
     getSingleRooms: builder.query<TResponseRedux<TRoom>, unknown>({
-      query: (id: string) => ({
+      query: (id) => ({
         url: `/rooms/${id}`,
         method: "GET",
       }),
@@ -29,7 +29,15 @@ const roomApi = baseApi.injectEndpoints({
         url: `/rooms/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags:['room']
+      invalidatesTags: ["room"],
+    }),
+    updateRoom: builder.mutation({
+      query: (payload) => ({
+        url: `/rooms/${payload?.id}`,
+        method: "PUT",
+        body: payload?.data,
+      }),
+      invalidatesTags: ["room"],
     }),
   }),
 });
@@ -39,4 +47,5 @@ export const {
   useGetAllRoomsQuery,
   useGetSingleRoomsQuery,
   useDeleteRoomMutation,
+  useUpdateRoomMutation,
 } = roomApi;

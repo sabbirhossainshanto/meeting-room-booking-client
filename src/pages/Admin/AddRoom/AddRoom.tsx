@@ -20,7 +20,7 @@ const AddRoom = () => {
       roomNo: Number(data?.roomNo),
       floorNo: Number(data?.floorNo),
       capacity: Number(data?.capacity),
-      pricePerSlot: Number(data?.pricePerSLot),
+      pricePerSlot: Number(data?.pricePerSlot),
       amenities: [data?.amenities],
     };
 
@@ -134,7 +134,7 @@ const AddRoom = () => {
                     Price Per Slot <span className="text-primary">*</span>
                   </label>
                   <input
-                    {...register("pricePerSLot", { required: true })}
+                    {...register("pricePerSlot", { required: true })}
                     className="w-full text-sm border-[2.5px] border-[#E9E4E4] rounded focus:ring-0 focus:outline-primary mt-2 py-2 px-2"
                     type="text"
                     id="last_name"

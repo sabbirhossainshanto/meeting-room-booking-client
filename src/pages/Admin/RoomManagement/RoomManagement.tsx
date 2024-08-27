@@ -1,3 +1,4 @@
+import UpdateRoom from "@/components/modal/admin/UpdateRoom";
 import Container from "@/components/shared/Container";
 import {
   useDeleteRoomMutation,
@@ -40,6 +41,12 @@ const RoomManagement = () => {
       toast.error(error?.data?.errorMessages?.[0]?.message);
     }
   };
+
+  const handleModalOpen = (id: string) => {
+    setIsModalOpen(true);
+    setRoomId(id);
+  };
+
   return (
     <div className="py-14">
       <Container>
@@ -77,7 +84,7 @@ const RoomManagement = () => {
                 </div>
                 <div className="mt-6 md:mt-0">
                   <a
-                    href="product-view.html"
+                 
                     className="hover:text-primary transition duration-300 text-lg"
                   >
                     <h5 className="font-medium">
@@ -86,21 +93,21 @@ const RoomManagement = () => {
                   </a>
                   <p className="instock mb-0">
                     Room No:{" "}
-                    <span className="text-[#28A745]">{room.roomNo}</span>
+                    <span className="">{room.roomNo}</span>
                   </p>
                   <p className="instock mb-0">
                     Floor No:{" "}
-                    <span className="text-[#28A745]">{room.floorNo}</span>
+                    <span className="">{room.floorNo}</span>
                   </p>
                 </div>
                 <div className="mt-6 md:mt-0">
                   <a
-                    href="product-view.html"
-                    className="hover:text-primary transition duration-300 text-lg"
+               
+                    className=" text-lg"
                   >
                     <h5 className="font-medium ">
                       <span className="font-semibold ">Capacity :</span>{" "}
-                      <span className="text-[#28A745]">{room.capacity}</span>
+                      <span className="">{room.capacity}</span>
                     </h5>
                   </a>
                   <div className="text-[18px]  font-semibold mt-2 md:mt-0">
@@ -113,10 +120,18 @@ const RoomManagement = () => {
 
                 <div className="flex justify-between md:gap-12 items-center mt-4 md:mt-0">
                   <div className="group">
-                    <button className="flex gap-2 items-center border border-primary bg-primary text-white text-sm uppercase px-4 py-2 rounded hover:bg-white hover:text-primary transition duration-300">
+                    <button
+                      onClick={() => handleModalOpen(room._id)}
+                      className="flex gap-2 items-center border border-primary bg-primary text-white text-sm uppercase px-4 py-2 rounded hover:bg-white hover:text-primary transition duration-300"
+                    >
                       <span className="text-white group-hover:text-primary transition"></span>{" "}
                       Edit Room
                     </button>
+                    <UpdateRoom
+                      isModalOpen={isModalOpen}
+                      setIsModalOpen={setIsModalOpen}
+                      roomId={roomId}
+                    />
                   </div>
                   <div
                     onClick={() => handleDeleteRoom(room)}

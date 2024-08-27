@@ -64,6 +64,7 @@ const UpdateSlot = ({
       open={isModalOpen}
       onCancel={() => setIsModalOpen(false)}
       onOk={handleUpdateSlot}
+
     >
       <div className="sm:flex md:block lg:flex gap-6 mt-6">
         <div className="w-full  md:w-full  mt-6 sm:mt-0 md:mt-6 lg:mt-0">
