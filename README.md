@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+## Meeting Room Booking
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Meeting-Room-Booking[(https://meeting-room-booking-gules.vercel.app/)]
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to our Meeting Room Booking platform! This website is designed to simplify the process of reserving meeting rooms for businesses and individuals. Built using React, Redux, Mongoose, and Express, our platform offers a seamless booking experience, detailed room descriptions, and an intuitive scheduling system. Administrators can efficiently manage room availability and bookings, while users can quickly find and book the perfect space for their meetings.
 
-## Expanding the ESLint configuration
+## Project Description
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This project aims to provide a modern, user-friendly platform for booking meeting rooms. Our goal is to create an engaging and efficient booking experience with comprehensive tools for both users and administrators.
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Room Browsing: Users can view, search, and filter available meeting rooms.
+Booking Management: Users can easily book rooms, see booking
+Scheduling: Users can check room availability and schedule meetings.
+Admin Dashboard: Administrators can add, edit, and manage room availability and bookings.
+
+## Technology Stack
+
+Frontend: Vite, TypeScript, React, Redux, shadcn-ui, antd, Tailwind CSS, react-hook-form, react-hot-toast, sweetalert, React Router DOM
+Backend: Express, Mongoose
+Database: MongoDB
+
+## Installation Guideline
+
+```tsx
+ npm i                      //For install all the dependencies
+ npm run dev                //For run the project in typescript locally--> ts-node-dev)
+ npm run build              //for build project typescript to Java Script
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Prerequisites
+
+-Node.js
+-npm or yarn

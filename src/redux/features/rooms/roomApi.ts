@@ -11,11 +11,25 @@ const roomApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["room"],
     }),
-    getAllRooms: builder.query<TResponseRedux<TRoom[]>, void>({
-      query: () => ({
-        url: "/rooms",
-        method: "GET",
-      }),
+    getAllRooms: builder.query({
+      query: (query) => {
+        const params = new URLSearchParams();
+        if (query?.searchTerm) {
+          params.append("searchTerm", query.searchTerm);
+        }
+        if (query?.sort) {
+          params.append("sort", query.sort);
+        }
+        if (query?.filter) {
+          params.append("filter", query.filter);
+        }
+
+        return {
+          url: "/rooms",
+          method: "GET",
+          params,
+        };
+      },
       providesTags: ["room"],
     }),
     getSingleRooms: builder.query<TResponseRedux<TRoom>, unknown>({
