@@ -17,7 +17,7 @@ const MyBookings = () => {
     setIsModalOpen(true);
     setBookingData(booking);
   };
-
+console.log(data);
   return (
     <div className="py-14">
       <Container>

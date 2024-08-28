@@ -16,6 +16,7 @@ import team1 from "./images/team-1.jpg";
 import team2 from "./images/team-2.jpg";
 import team3 from "./images/team-3.jpg";
 import team4 from "./images/team-4.jpg";
+import question from "./images/questions.png";
 export default {
   logo,
   paymentMethod,
@@ -34,5 +35,5 @@ export default {
   team1,
   team2,
   team3,
-  team4,
+  team4,question
 };
