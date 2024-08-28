@@ -11,5 +11,8 @@ export type TMyBooking = {
   isConfirmed: string;
   totalAmount: number;
   isDeleted: boolean;
+  transactionId:string;
+  isPaid:string;
   __v: number;
+
 };

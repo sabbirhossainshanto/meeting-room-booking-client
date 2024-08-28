@@ -83,36 +83,30 @@ const RoomManagement = () => {
                   />
                 </div>
                 <div className="mt-6 md:mt-0">
-                  <a
-                 
-                    className="hover:text-primary transition duration-300 text-lg"
-                  >
-                    <h5 className="font-medium">
-                      <span className="font-semibold">Name :</span> {room.name}
+                  <a className="hover:text-primary transition duration-300 text-lg">
+                    <h5 className="font-medium ">
+                      <span className="">Name :</span> {room.name}
                     </h5>
                   </a>
-                  <p className="instock mb-0">
-                    Room No:{" "}
+                  <p className=" mb-0 text-lg">
+                    <span className="font-medium "> Room No: </span>
                     <span className="">{room.roomNo}</span>
                   </p>
-                  <p className="instock mb-0">
-                    Floor No:{" "}
+                  <p className=" mb-0 text-lg">
+                    <span className="font-medium">Floor No:</span>{" "}
                     <span className="">{room.floorNo}</span>
                   </p>
                 </div>
                 <div className="mt-6 md:mt-0">
-                  <a
-               
-                    className=" text-lg"
-                  >
-                    <h5 className="font-medium ">
-                      <span className="font-semibold ">Capacity :</span>{" "}
+                  <a className=" text-lg">
+                    <h5 className="">
+                      <span className="font-medium ">Capacity :</span>{" "}
                       <span className="">{room.capacity}</span>
                     </h5>
                   </a>
-                  <div className="text-[18px]  font-semibold mt-2 md:mt-0">
-                    <h5 className="font-medium">
-                      <span className="font-semibold">Price Per Slot :</span>{" "}
+                  <div className="text-lg  mt-2 md:mt-0">
+                    <h5 className="">
+                      <span className="font-medium">Price Per Slot :</span>{" "}
                       <span className="text-primary">${room.pricePerSlot}</span>
                     </h5>
                   </div>

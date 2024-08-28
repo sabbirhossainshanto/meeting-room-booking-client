@@ -20,7 +20,41 @@ const bookingApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getAllBooking: builder.query<TResponseRedux<TMyBooking[]>, unknown>({
+      query: () => {
+        return {
+          url: "/bookings",
+          method: "GET",
+        };
+      },
+      providesTags: ["booking"],
+    }),
+    deleteBooking: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/bookings/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["booking"],
+    }),
+    updateBooking: builder.mutation({
+      query: (payload) => {
+        return {
+          url: `/bookings/${payload?.id}`,
+          method: "PUT",
+          body: payload.data,
+        };
+      },
+      invalidatesTags: ["booking"],
+    }),
   }),
 });
 
-export const { useCreateBookingMutation, useMyBookingsQuery } = bookingApi;
+export const {
+  useCreateBookingMutation,
+  useMyBookingsQuery,
+  useGetAllBookingQuery,
+  useDeleteBookingMutation,
+  useUpdateBookingMutation,
+} = bookingApi;

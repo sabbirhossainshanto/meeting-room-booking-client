@@ -40,6 +40,8 @@ const Checkout = () => {
     try {
       const res = await addBooking(bookingData).unwrap();
       if (res?.success) {
+        console.log(res);
+        window.location.href = res.data?.payment_url;
         toast.success(res?.message);
         // navigate("/");
       }

@@ -78,7 +78,7 @@ const SingleRoom = () => {
             <div className="col-span-12 lg:col-span-6">
               <div className="product_info_wrapper">
                 <div className="product_base_info">
-                  <h1 className="text-2xl sm:text-3xl uppercase">
+                  <h1 className="text-2xl sm:text-3xl uppercase font-semibold">
                     {data?.data?.name}
                   </h1>
 
