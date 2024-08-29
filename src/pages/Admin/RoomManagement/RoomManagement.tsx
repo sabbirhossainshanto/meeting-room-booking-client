@@ -1,5 +1,5 @@
 import UpdateRoom from "@/components/modal/admin/UpdateRoom";
-import Container from "@/components/shared/Container";
+
 import {
   useDeleteRoomMutation,
   useGetAllRoomsQuery,
@@ -48,8 +48,8 @@ const RoomManagement = () => {
   };
 
   return (
-    <div className="py-14">
-      <Container>
+    <div className="py-14 container">
+     
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 pb-10">
             <MdDashboard
@@ -68,46 +68,48 @@ const RoomManagement = () => {
           </button>
         </div>
         <div className="col-span-12 lg:col-span-9">
-          {data?.data?.map((room) => {
+          {data?.data?.map((room:TRoom) => {
             return (
               <div
-                key={room._id}
+                key={room?._id}
                 className="md:flex justify-between items-center border rounded p-5"
               >
-                <div className="w-20 h-20">
+              <div className="flex-1">
+              <div className="w-32 h-20">
                   <img
                     loading="lazy"
                     className="w-full h-full object-cover"
-                    src={room.images?.[0]}
+                    src={room?.images?.[0]}
                     alt="product"
                   />
                 </div>
-                <div className="mt-6 md:mt-0">
+              </div>
+                <div className="mt-6 md:mt-0 flex-1">
                   <a className="hover:text-primary transition duration-300 text-lg">
                     <h5 className="font-medium ">
-                      <span className="">Name :</span> {room.name}
+                      <span className="">Name :</span> {room?.name}
                     </h5>
                   </a>
                   <p className=" mb-0 text-lg">
                     <span className="font-medium "> Room No: </span>
-                    <span className="">{room.roomNo}</span>
+                    <span className="">{room?.roomNo}</span>
                   </p>
                   <p className=" mb-0 text-lg">
                     <span className="font-medium">Floor No:</span>{" "}
-                    <span className="">{room.floorNo}</span>
+                    <span className="">{room?.floorNo}</span>
                   </p>
                 </div>
-                <div className="mt-6 md:mt-0">
+                <div className="mt-6 md:mt-0 flex-1">
                   <a className=" text-lg">
                     <h5 className="">
                       <span className="font-medium ">Capacity :</span>{" "}
-                      <span className="">{room.capacity}</span>
+                      <span className="">{room?.capacity}</span>
                     </h5>
                   </a>
                   <div className="text-lg  mt-2 md:mt-0">
                     <h5 className="">
                       <span className="font-medium">Price Per Slot :</span>{" "}
-                      <span className="text-primary">${room.pricePerSlot}</span>
+                      <span className="text-primary">${room?.pricePerSlot}</span>
                     </h5>
                   </div>
                 </div>
@@ -115,7 +117,7 @@ const RoomManagement = () => {
                 <div className="flex justify-between md:gap-12 items-center mt-4 md:mt-0">
                   <div className="group">
                     <button
-                      onClick={() => handleModalOpen(room._id)}
+                      onClick={() => handleModalOpen(room?._id)}
                       className="flex gap-2 items-center border border-primary bg-primary text-white text-sm uppercase px-4 py-2 rounded hover:bg-white hover:text-primary transition duration-300"
                     >
                       <span className="text-white group-hover:text-primary transition"></span>{" "}
@@ -148,7 +150,7 @@ const RoomManagement = () => {
             );
           })}
         </div>
-      </Container>
+      
     </div>
   );
 };

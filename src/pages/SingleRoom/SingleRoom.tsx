@@ -1,5 +1,4 @@
 import assets from "@/assets";
-import Container from "@/components/shared/Container";
 import { useGetSingleRoomsQuery } from "@/redux/features/rooms/roomApi";
 import { FaGreaterThan } from "react-icons/fa";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -21,8 +20,7 @@ const SingleRoom = () => {
   };
 
   return (
-    <div className="py-10">
-      <Container>
+    <div className="py-10 container">
         <div className="flex items-center gap-2">
           <MdOutlineHome
             onClick={() => navigate("/")}
@@ -152,7 +150,6 @@ const SingleRoom = () => {
             </div>
           </div>
         </div>
-      </Container>
     </div>
   );
 };

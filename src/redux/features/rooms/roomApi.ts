@@ -43,7 +43,7 @@ const roomApi = baseApi.injectEndpoints({
         url: `/rooms/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["room"],
+      invalidatesTags: ["room", "slot"],
     }),
     updateRoom: builder.mutation({
       query: (payload) => ({

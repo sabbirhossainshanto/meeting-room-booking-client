@@ -1,4 +1,4 @@
-import Container from "@/components/shared/Container";
+
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FaGreaterThan } from "react-icons/fa";
@@ -50,8 +50,8 @@ const AddRoom = () => {
   };
 
   return (
-    <div className="py-14">
-      <Container>
+    <div className="py-14 container">
+    
         <div className="flex items-center gap-2">
           <MdDashboard
             onClick={() => navigate("/dashboard")}
@@ -197,7 +197,7 @@ const AddRoom = () => {
             </form>
           </div>
         </div>
-      </Container>
+  
     </div>
   );
 };

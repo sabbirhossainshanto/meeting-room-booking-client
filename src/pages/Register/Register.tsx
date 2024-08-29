@@ -1,13 +1,13 @@
-import Container from "@/components/shared/Container";
 import { useSignUpMutation } from "@/redux/features/auth/authApi";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGreaterThan } from "react-icons/fa";
 import { MdOutlineHome } from "react-icons/md";
+import { TbFidgetSpinner } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [handleSignUp] = useSignUpMutation();
+  const [handleSignUp, { isLoading, isSuccess }] = useSignUpMutation();
   const navigate = useNavigate();
   window.scrollTo(0, 0);
   const { handleSubmit, register } = useForm({
@@ -39,8 +39,8 @@ const Register = () => {
   };
   return (
     <div className="py-10 bg-gray-50">
-      <Container>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center gap-2 container">
           <MdOutlineHome
             onClick={() => navigate("/")}
             size={20}
@@ -110,7 +110,7 @@ const Register = () => {
                 <input
                   {...register("phone", { required: true })}
                   className="w-full border border-[#E9E4E4] rounded focus:ring-0 focus:outline-primary mt-1 py-3 px-2"
-                  type="text"
+                  type="number"
                   placeholder="0123456789"
                 />
               </div>
@@ -122,7 +122,7 @@ const Register = () => {
                 <input
                   {...register("address", { required: true })}
                   className="w-full border border-[#E9E4E4] rounded focus:ring-0 focus:outline-primary mt-1 py-3 px-2"
-                  type="password"
+                  type="text"
                   placeholder="123 Main Street, City, Country"
                 />
               </div>
@@ -149,7 +149,14 @@ const Register = () => {
                 type="submit"
                 className="default_btn rounded w-full hover:bg-white hover:border-rose-500 hover:text-primary"
               >
-                Create Account
+                {!isLoading && !isSuccess ? (
+                  <span> Create Account</span>
+                ) : (
+                  <span className="flex items-center gap-2 justify-center text-base">
+                    <span>Please Wait</span>{" "}
+                    <TbFidgetSpinner className="animate-spin" />
+                  </span>
+                )}
               </button>
             </div>
           </form>
@@ -174,7 +181,7 @@ const Register = () => {
             </Link>
           </p>
         </div>
-      </Container>
+   
     </div>
   );
 };

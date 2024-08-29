@@ -1,5 +1,4 @@
 import assets from "@/assets";
-import Container from "@/components/shared/Container";
 import { useState } from "react";
 
 const WhyChooseUs = () => {
@@ -13,8 +12,8 @@ const WhyChooseUs = () => {
     }
   };
   return (
-    <Container>
-      <div className={`py-14`}>
+ 
+      <div className={`container py-14`}>
         <h2 className="text-[28px] mb-6">Wy Choose Us ??</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 justify-items-center place-content-center gap-5">
           <img className="size-52 sm:size-96" src={assets.question} alt="" />
@@ -372,7 +371,7 @@ const WhyChooseUs = () => {
           </div>
         </div>
       </div>
-    </Container>
+ 
   );
 };
 

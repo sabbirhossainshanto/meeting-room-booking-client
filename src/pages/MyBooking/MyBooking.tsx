@@ -1,5 +1,4 @@
 import SeeSlot from "@/components/modal/SeeSlot";
-import Container from "@/components/shared/Container";
 import { useMyBookingsQuery } from "@/redux/features/user/booking/bookingApi";
 import { TMyBooking } from "@/types";
 import { useState } from "react";
@@ -17,10 +16,9 @@ const MyBookings = () => {
     setIsModalOpen(true);
     setBookingData(booking);
   };
-console.log(data);
+
   return (
-    <div className="py-14">
-      <Container>
+    <div className="py-14 container">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 pb-10">
             <MdOutlineHome
@@ -36,33 +34,33 @@ console.log(data);
           {data?.data?.map((booking) => {
             return (
               <div
-                key={booking._id}
+                key={booking?._id}
                 className="md:flex justify-between items-center border rounded p-5"
               >
                 <div className="w-20 h-20">
                   <img
                     loading="lazy"
                     className="w-full h-full object-cover"
-                    src={booking.room.images?.[0]}
+                    src={booking?.room?.images?.[0]}
                     alt="product"
                   />
                 </div>
                 <div className="mt-6 md:mt-0">
                   <a
                     onClick={() =>
-                      navigate(`/meeting-rooms/${booking.room._id}`)
+                      navigate(`/meeting-rooms/${booking?.room._id}`)
                     }
                     className="hover:text-primary transition duration-300 text-lg cursor-pointer"
                   >
                     <h5 className="">
                       <span className="font-medium">Name :</span>{" "}
-                      {booking.room.name}
+                      {booking?.room?.name}
                     </h5>
                   </a>
                   <p className=" text-lg">
                     <h5 className=" ">
                       <span className="font-medium">Room No :</span>{" "}
-                      <span className="">{booking.room.roomNo}</span>
+                      <span className="">{booking?.room?.roomNo}</span>
                     </h5>
                   </p>
                 </div>
@@ -70,7 +68,7 @@ console.log(data);
                   <p className=" text-lg">
                     <h5 className="">
                       <span className="font-medium ">Date :</span>{" "}
-                      <span className="">{booking.date}</span>
+                      <span className="">{booking?.date}</span>
                     </h5>
                   </p>
 
@@ -80,24 +78,24 @@ console.log(data);
                       <span
                         className={`
                         ${
-                          booking.isConfirmed === "confirmed"
+                          booking?.isConfirmed === "confirmed"
                             ? "text-green-600"
                             : ""
                         }
                         ${
-                          booking.isConfirmed === "unconfirmed"
+                          booking?.isConfirmed === "unconfirmed"
                             ? "text-yellow-600"
                             : ""
                         }
                         ${
-                          booking.isConfirmed === "canceled"
+                          booking?.isConfirmed === "canceled"
                             ? "text-primary"
                             : ""
                         }
                       
                       `}
                       >
-                        {booking.isConfirmed}
+                        {booking?.isConfirmed}
                       </span>
                     </h5>
                   </p>
@@ -120,7 +118,7 @@ console.log(data);
             );
           })}
         </div>
-      </Container>
+
     </div>
   );
 };

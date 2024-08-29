@@ -1,7 +1,7 @@
 const ContactForm = () => {
   return (
-    <div className="container py-14">
-      <div className="grid grid-cols-12 gap-6">
+    <div className="py-14 container">
+      <div className="grid grid-cols-12 gap-6 ">
         <div className="col-span-12 lg:col-span-7 bg-white box_shadow px-[30px] py-[24px]">
           <div>
             <h4 className="text-[20px] sm:text-[28px] uppercase mb-1">

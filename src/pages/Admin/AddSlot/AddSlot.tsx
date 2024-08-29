@@ -1,4 +1,4 @@
-import Container from "@/components/shared/Container";
+
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FaGreaterThan } from "react-icons/fa";
@@ -15,6 +15,7 @@ import {
   TimePicker,
 } from "antd";
 import { useAddSlotMutation } from "@/redux/features/user/slot/slotApi";
+import { TRoom } from "@/types";
 
 const AddSlot = () => {
   const [addSlot, { isLoading, isSuccess }] = useAddSlotMutation();
@@ -49,13 +50,13 @@ const AddSlot = () => {
     setDate(dateString);
   };
 
-  const options: SelectProps["options"] = rooms?.data?.map((room) => ({
+  const options: SelectProps["options"] = rooms?.data?.map((room:TRoom) => ({
     label: room.name,
     value: room._id,
   }));
   return (
-    <div className="py-14">
-      <Container>
+    <div className="py-14 container">
+   
         <div className="flex items-center gap-2">
           <MdDashboard
             onClick={() => navigate("/dashboard")}
@@ -137,7 +138,7 @@ const AddSlot = () => {
             </form>
           </div>
         </div>
-      </Container>
+    
     </div>
   );
 };

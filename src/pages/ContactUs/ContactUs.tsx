@@ -9,7 +9,7 @@ const ContactUs = () => {
         className="bg-cover bg-center bg-no-repeat h-[350px]"
         style={{ backgroundImage: `url(${assets.contactBanner})` }}
       >
-        <div className="container mx-auto py-36">
+        <div className="mx-auto py-36">
           <h1 className="text-center text-3xl uppercase text-white mb-1">
             Contact us
           </h1>

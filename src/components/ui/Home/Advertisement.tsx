@@ -5,8 +5,8 @@ import { GiConfirmed} from "react-icons/gi";
 const Advertisement = () => {
   return (
     <div className="container py-14">
-      <div className="flex justify-center">
-        <div className="w-full xl:w-5/6 max-w-full xl:px-3">
+      <div className="flex justify-between">
+        <div className="w-full max-w-full">
           <div className="sm:flex justify-center">
             <div className="w-[270px] sm:w-1/3 max-w-full sm:pr-3 mb-3 sm:mb-0 mx-auto">
               <div className="min-h-[90px] border border-primary rounded-sm flex items-center justify-center">

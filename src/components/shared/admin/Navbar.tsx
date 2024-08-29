@@ -1,13 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-import Container from "../Container";
 import assets from "@/assets";
 import NavbarDropDown from "./NavbarDropDown";
 
 const Navbar = () => {
   return (
     <div className=" bg-[#2b2d42] ">
-      <Container>
-        <header className="flex items-center justify-between  py-6">
+ 
+        <header className="flex items-center justify-between  py-6 container">
           <div className="flex items-center justify-center gap-10">
             <Link to="/">
               <img className="h-7" src={assets.logo} alt="" />
@@ -72,7 +71,7 @@ const Navbar = () => {
             <NavbarDropDown />
           </div>
         </header>
-      </Container>
+   
     </div>
   );
 };

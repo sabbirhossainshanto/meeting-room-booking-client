@@ -1,4 +1,3 @@
-import Container from "@/components/shared/Container";
 import { useGetMeQuery } from "@/redux/features/auth/authApi";
 import { useCreateBookingMutation } from "@/redux/features/user/booking/bookingApi";
 import { useGetAvailableSlotsQuery } from "@/redux/features/user/slot/slotApi";
@@ -9,6 +8,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGreaterThan } from "react-icons/fa";
 import { MdOutlineHome } from "react-icons/md";
+import { TbFidgetSpinner } from "react-icons/tb";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Checkout = () => {
@@ -19,7 +19,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const { data: user } = useGetMeQuery(undefined);
   const { data: slots } = useGetAvailableSlotsQuery(query);
-  const [addBooking] = useCreateBookingMutation();
+  const [addBooking, { isLoading, isSuccess }] = useCreateBookingMutation();
   const { handleSubmit, register, reset } = useForm({
     defaultValues: {
       name: user?.data?.name,
@@ -40,10 +40,7 @@ const Checkout = () => {
     try {
       const res = await addBooking(bookingData).unwrap();
       if (res?.success) {
-        console.log(res);
         window.location.href = res.data?.payment_url;
-        toast.success(res?.message);
-        // navigate("/");
       }
     } catch (error: any) {
       toast.error(error?.data?.errorMessages?.[0]?.message);
@@ -64,7 +61,7 @@ const Checkout = () => {
   useEffect(() => {
     if (slots) {
       const categories = Array.from(
-        new Set(slots?.data?.map((item) => item.date))
+        new Set(slots?.data?.map((item) => item?.date))
       );
 
       setCategories(categories);
@@ -72,8 +69,8 @@ const Checkout = () => {
   }, [slots]);
 
   const options: SelectProps["options"] = slots?.data?.map((slot) => ({
-    label: `Start Time ${slot.startTime} - End Time ${slot.endTime}`,
-    value: slot._id,
+    label: `Start Time ${slot.startTime} - End Time ${slot?.endTime}`,
+    value: slot?._id,
   }));
   const dateOption: SelectProps["options"] = categories?.map((category) => ({
     label: category,
@@ -81,11 +78,11 @@ const Checkout = () => {
   }));
 
   const getSelectedSlot = slots?.data?.filter((item) =>
-    slot.includes(item._id)
+    slot.includes(item?._id)
   );
 
   const totalPrice = getSelectedSlot?.reduce((acc, slot) => {
-    return acc + slot.room.pricePerSlot;
+    return acc + slot?.room?.pricePerSlot;
   }, 0);
 
   if (!categories) {
@@ -93,8 +90,8 @@ const Checkout = () => {
   }
 
   return (
-    <div className="py-10">
-      <Container>
+    <div className="py-10 container">
+
         <div className="flex items-center gap-2">
           <MdOutlineHome
             onClick={() => navigate("/")}
@@ -199,18 +196,18 @@ const Checkout = () => {
             <h4 className="bg-[#E9E4E4] px-3 py-2">Room Details</h4>
             <div className="border border-[#E9E4E4] px-4 py-6 mt-4">
               <h4 className="uppercase border-b border-[#E9E4E4] pb-2">
-                {slots?.data?.[0]?.room.name}
+                {slots?.data?.[0]?.room?.name}
               </h4>
               {getSelectedSlot?.map((slot) => {
                 return (
-                  <div key={slot._id} className="flex justify-between mt-5">
+                  <div key={slot?._id} className="flex justify-between mt-5">
                     <div className="checkorder_cont">
                       <h5>
-                        {slot.startTime} - {slot.endTime}
+                        {slot?.startTime} - {slot?.endTime}
                       </h5>
                     </div>
 
-                    <p className="font-semibold">${slot.room.pricePerSlot}</p>
+                    <p className="font-semibold">${slot?.room?.pricePerSlot}</p>
                   </div>
                 );
               })}
@@ -244,13 +241,20 @@ const Checkout = () => {
 
               <div className="mt-4">
                 <button type="submit" className="default_btn btn-hover w-full">
-                  place order
+                  {!isLoading && !isSuccess ? (
+                    <span>Place Order</span>
+                  ) : (
+                    <span className="flex items-center gap-2 justify-center text-base">
+                      <span>Please Wait</span>{" "}
+                      <TbFidgetSpinner className="animate-spin" />
+                    </span>
+                  )}
                 </button>
               </div>
             </div>
           </div>
         </form>
-      </Container>
+    
     </div>
   );
 };

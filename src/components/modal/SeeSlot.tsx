@@ -22,18 +22,18 @@ const SeeSlot = ({ isModalOpen, setIsModalOpen, booking }: TSlotProp) => {
           {booking?.slots?.map((slot) => {
             return (
               <div
-                key={slot._id}
+                key={slot?._id}
                 className="flex justify-between mb-4 border-b"
               >
                 <div className="checkorder_cont">
                   <h5>
-                    <span className="font-medium">Time :</span> {slot.startTime}{" "}
-                    - {slot.endTime}
+                    <span className="font-medium">Time :</span> {slot?.startTime}{" "}
+                    - {slot?.endTime}
                   </h5>
                 </div>
 
                 <p className="font-semibold text-primary">
-                  ${booking.room.pricePerSlot}
+                  ${booking?.room?.pricePerSlot}
                 </p>
               </div>
             );

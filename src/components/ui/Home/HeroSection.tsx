@@ -11,9 +11,9 @@ import {
 import { sliderData } from "@/static/sliderData";
 import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className="relative w-full h-[500px]">
+    <div className=" relative w-full mx-auto h-[500px]">
       <Carousel
         className=" overflow-hidden rounded-lg shadow-lg"
         plugins={[
@@ -39,7 +39,10 @@ const HeroSection = () => {
                     <p className="bg-[#3335] px-10 py-1 text-white font-semibold text-base sm:text-lg rounded-md h-auto">
                       {slider.title}
                     </p>
-                    <button onClick={() => navigate('/meeting-rooms')} className="default_btn btn-hover rounded">
+                    <button
+                      onClick={() => navigate("/meeting-rooms")}
+                      className="default_btn btn-hover rounded"
+                    >
                       Book Now
                     </button>
                   </div>

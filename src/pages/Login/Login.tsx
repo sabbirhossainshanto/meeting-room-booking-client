@@ -1,4 +1,4 @@
-import Container from "@/components/shared/Container";
+
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
@@ -8,23 +8,23 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGreaterThan } from "react-icons/fa";
 import { MdOutlineHome } from "react-icons/md";
+import { TbFidgetSpinner } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  const [handleLogin] = useLoginMutation();
+  const [handleLogin, { isLoading, isSuccess }] = useLoginMutation();
   const navigate = useNavigate();
   window.scrollTo(0, 0);
   const { handleSubmit, register } = useForm({
     defaultValues: {
-      email: "web@hero.com",
-      password: "ph-password",
+      email: "sabbirshnt@gmail.com",
+      password: "sabbirdev",
     },
   });
 
   const handleSignIn: SubmitHandler<FieldValues> = async (data) => {
     try {
-    
       const res = await handleLogin(data).unwrap();
       if (res?.success) {
         const user = verifyToken(res.token) as TUser;
@@ -33,13 +33,14 @@ const Login = () => {
         navigate("/");
       }
     } catch (error: any) {
+      console.log(error);
       toast.error(error?.data?.errorMessages?.[0]?.message);
     }
   };
   return (
     <div className="py-10 bg-gray-50">
-      <Container>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center gap-2 container">
           <MdOutlineHome
             onClick={() => navigate("/")}
             size={20}
@@ -50,9 +51,7 @@ const Login = () => {
         </div>
 
         <div className="w-full max-w-[500px] mx-auto box_shadow rounded px-[30px] py-[24px] mb-14">
-          <h4 className="text-[28px] uppercase font-semibold">
-            Login
-          </h4>
+          <h4 className="text-[28px] uppercase font-semibold">Login</h4>
           <p className="mb-4 text_md">Login if you a a returing customer</p>
           <form onSubmit={handleSubmit(handleSignIn)}>
             <div>
@@ -94,10 +93,7 @@ const Login = () => {
                   </label>
                 </div>
                 <div>
-                  <a
-             
-                    className="text-primary text-sm sm:text-base"
-                  >
+                  <a className="text-primary text-sm sm:text-base">
                     Forgot Password?
                   </a>
                 </div>
@@ -108,7 +104,14 @@ const Login = () => {
                 type="submit"
                 className="default_btn rounded w-full hover:bg-white hover:border-rose-500 hover:text-primary"
               >
-                Login
+                {!isLoading && !isSuccess ? (
+                  <span> Login</span>
+                ) : (
+                  <span className="flex items-center gap-2 justify-center text-base">
+                    <span>Please Wait</span>{" "}
+                    <TbFidgetSpinner className="animate-spin" />
+                  </span>
+                )}
               </button>
             </div>
           </form>
@@ -133,7 +136,7 @@ const Login = () => {
             </Link>
           </p>
         </div>
-      </Container>
+    
     </div>
   );
 };

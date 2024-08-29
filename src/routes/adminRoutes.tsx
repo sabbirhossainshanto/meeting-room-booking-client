@@ -7,6 +7,10 @@ import UserManagement from "@/pages/Admin/UserManagement/UserManagement";
 
 export const adminRoutes = [
   {
+    index: true,
+    element: <RoomManagement />,
+  },
+  {
     path: "room-management",
     element: <RoomManagement />,
   },

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Heading = ({ to, title, color, padding }: THeading) => {
   const navigate = useNavigate();
   return (
-    <div className={`flex items-center gap-2 pt-${padding}`}>
+    <div className={`flex items-center gap-2 pt-${padding} container`}>
       <MdOutlineHome
         onClick={() => navigate(to)}
         size={20}

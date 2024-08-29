@@ -8,11 +8,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { customerReview } from "@/static/customerReview";
-import Container from "@/components/shared/Container";
 const CustomersReview = () => {
   return (
-    <Container>
-      <div className="relative w-full h-[400px] mt-6">
+ 
+      <div className="container  relative w-full h-[400px] mt-6">
         <h2 className="text-[28px] mb-6">Customers Review</h2>
         <Carousel
           opts={{
@@ -62,7 +61,7 @@ const CustomersReview = () => {
           </CarouselNext>
         </Carousel>
       </div>
-    </Container>
+ 
   );
 };
 

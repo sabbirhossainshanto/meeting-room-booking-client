@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/redux/hooks";
 import { TRoom } from "@/types";
+import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
@@ -14,6 +15,9 @@ const RoomCard = ({ room }: { room: TRoom }) => {
     if (user) {
       if (user?.role === "user") {
         navigate(`/meeting-rooms/${id}`);
+      }
+      if (user?.role === "admin") {
+        toast.error("Only user can see room details!");
       }
     } else {
       Swal.fire({
@@ -35,7 +39,10 @@ const RoomCard = ({ room }: { room: TRoom }) => {
   const handleNavigateToBooking = (room: TRoom) => {
     if (user) {
       if (user?.role === "user") {
-        navigate(`/booking/${room._id}`);
+        navigate(`/booking/${room?._id}`);
+      }
+      if (user?.role === "admin") {
+        toast.error("Only user can Book rooms!");
       }
     } else {
       Swal.fire({
@@ -57,8 +64,8 @@ const RoomCard = ({ room }: { room: TRoom }) => {
     <div className="col-span-1 overflow-hidden rounded-[3px] shadow-sm group flex flex-col">
       <div className="relative">
         <img
-          src={room.images?.[0]}
-          className="w-full object-cover flex-shrink-0"
+          src={room?.images?.[0]}
+          className="w-full object-cover flex-shrink-0 h-72"
           alt="product"
         />
 
@@ -81,18 +88,18 @@ const RoomCard = ({ room }: { room: TRoom }) => {
       <div className="p-4 flex-grow">
         <a
           className="cursor-pointer"
-          onClick={() => navigateToRoomDetail(room._id)}
+          onClick={() => navigateToRoomDetail(room?._id)}
         >
           <h4 className="text-lg leading-6 mb-1  hover:text-primary font-medium transition duration-200">
-            {room.name}
+            {room?.name}
           </h4>
         </a>
         <p className="text-[15px] text-[#464545] mb-2.5">
-          Capacity : {room.capacity}
+          Capacity : {room?.capacity}
         </p>
         <div className="mr-[5px]">
           <span className="text-[#fd3d57] text-xl font-semibold leading-[22px]">
-            ${room.pricePerSlot}
+            ${room?.pricePerSlot}
           </span>
         </div>
       </div>
