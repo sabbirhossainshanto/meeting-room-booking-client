@@ -72,14 +72,14 @@ const NavbarDropdown = () => {
           </Link>
         )}
         <Link
-          to="/contact-us"
+          to="/about-us"
           className="flex items-center relative w-full mt-[7px] text-[15px] pl-8 text-[#464545] hover:text-primary transition duration-200"
         >
           <IoMdContact size={20} className="absolute left-0 top-[2px]" />
           About Us
         </Link>
         <Link
-          to="/about-us"
+          to="/contact-us"
           className="flex items-center relative w-full mt-[7px] text-[15px] pl-8 text-[#464545] hover:text-primary transition duration-200"
         >
           <IoMdContact size={20} className="absolute left-0 top-[2px]" />
